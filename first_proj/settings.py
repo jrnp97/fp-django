@@ -32,7 +32,7 @@ SECRET_KEY = '_%#e155f8jlg=d8s4(2+ch!oo7@8*h3@009mhrxp@j5vn%b03b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'pi-fd.herokuapp.com']
 
 
 # Application definition
