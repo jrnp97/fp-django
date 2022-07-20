@@ -87,6 +87,19 @@ WSGI_APPLICATION = 'first_proj.wsgi.application'
 DATABASES = {
     'default': env.db(),
 }
+"""
+'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+     # Ele diz que tipo de banco de dados vc estara utilizando definiendo o driver a utilizar
+    # POSTGRES: psyocpg2
+    # SQLite: sqlite3
+    # SQLServer: pyodbc
+    'NAME': '', # Nome do banco de dados
+    'HOST': '', # A ip ou dominio do servidor de banco de dados.
+    'PASSWORD': '', # A senha do banco de dados.
+    'USER': '', # O usuario do banco de dados.
+},
+"""
 
 
 # Password validation
