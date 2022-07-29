@@ -3,7 +3,7 @@
 
 ```
 ├── first_proj # Pasta do projeto de Django
-│ ├── asgi.py # Modulo que executa o ASGI (Async Server Gateway Interfaz)do projeto 
+│ ├── asgi.py # Modulo que executa o ASGI (Async Server Gateway Interfaz) do projeto 
 │ ├── __init__.py # modulo que indica que as pasta é um pacote.
 │ ├── settings.py # Modulo onde se espeficia as configurações do django.
 │ ├── urls.py #  # modulo onde se configurão as URL do Django

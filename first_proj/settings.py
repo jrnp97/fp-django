@@ -22,6 +22,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+print(f"BASE_DIR {BASE_DIR}")
+print(f"VENV PATH: {os.path.join(BASE_DIR, '.env')}")
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
@@ -40,15 +42,18 @@ ALLOWED_HOSTS = ['*', 'pi-fd.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'polls',
+    'django.contrib.admin',  # O painel de administracao
+    'django.contrib.auth',  #  O app com funcionalidades de authenticacao
+    'django.contrib.contenttypes',  # O app com funcionalidades de relacoes dinamicas.
+    'django.contrib.sessions',  # O app para a administracao de sessoes HTTP.
+    'django.contrib.messages', # O app para control de mensagens SIMPLES (NAO CHAT)
+    'django.contrib.staticfiles', # O app para trabalhar com arquivos staticos (html, js, imagen)
+    'polls', # Nosso app
+    'polls_2',
 ]
 
+# Classes que sao executadas no momento de processar uma request antes de executar uma VIEW
+#
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -60,8 +65,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'first_proj.urls'
+ROOT_URLCONF = 'first_proj.urls'  # define qual sera o modulo urls.py principal do projeto
 
+# Simplemente o sistema de templates de django.
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -78,12 +84,14 @@ TEMPLATES = [
     },
 ]
 
+# O modulo principal do WSGI
 WSGI_APPLICATION = 'first_proj.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# As configura;oes do banco de dados.
 DATABASES = {
     'default': env.db(),
 }
@@ -139,5 +147,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'static' # a pasta onde os arquivos staticos estao.
+
+# A Classe que controla esses arquivos.
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
