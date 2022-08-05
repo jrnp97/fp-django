@@ -118,3 +118,31 @@ class ConversorSuperPower(FormView):
     form_class = Conversor
     template_name = 'polls_2/conversor.html'
 
+
+from .models import Category
+
+def lista_categorias(request):
+    categorias = Category.objects.all()
+    return render(
+        request=request,
+        template_name='polls_2/lista_categorias.html',
+        context={
+            'categorias': categorias,
+        }
+    )
+
+
+def create_categoria(request):
+    from .forms import CategoryForm
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("DADOS VALIDADOS!!!")
+    else:
+        form = CategoryForm()
+    return render(
+        request=request,
+        template_name='polls_2/create_categoria.html',
+        context={'form': form},
+    )

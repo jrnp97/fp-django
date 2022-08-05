@@ -1,7 +1,7 @@
 """ Modulo para definicao de rotas do app"""
 from django.urls import path
 from .views import index, yury, carlos, carlos_two, conversor, PrimeiraCBView, SegundoConversor, IndexView, \
-   TemplateView, ConversorSuperPower
+   TemplateView, ConversorSuperPower, lista_categorias, create_categoria
 
 # URLS Config do app
 # Define a relacao entre um path e uma view
@@ -33,4 +33,9 @@ urlpatterns = [
    
    # 2. url
    path('power_conversor/', ConversorSuperPower.as_view(), name='power_conversor'),
+
+   # 2.
+   path('categorias/', lista_categorias, name='lista_categorias'),
+
+   path('categorias/new/', create_categoria, name='create_categoria'),
 ]

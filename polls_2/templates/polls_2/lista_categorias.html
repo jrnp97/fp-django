@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CATEGORIAS</title>
+</head>
+<body>
+<h1>CATEGORIAS</h1><br>
+<!-- Funcoes -->
+<button><a href="{% url 'create_categoria' %}">CRIAR CATEGORIA</a></button>
+
+<hr>
+<ul>
+    {% for categoria in categorias %}
+        <li>{{ categoria }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

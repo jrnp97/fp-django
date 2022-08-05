@@ -8,6 +8,12 @@ from django.db import models
 # 1. Criar/modificar ou eliminar uma clase modelo
 # 2. Criar a migracao
 # 3. Executar a migracao
+# Criar categorias - CREATE
+# Olhar o detalhe de uma categoria - READ
+# Actualizar uma categoria - UPDATE
+# Apagar uma categoria - DELETE
+# C.R.U.D <=
+# Lista das categorias cadastradas. - LIST [OK]
 class Category(models.Model):
     # Definir uma tabela no banco de dados
     # [E utilizada pelo sistema de migracoes para aplicar cambios no banco de dados.
