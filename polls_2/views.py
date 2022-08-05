@@ -76,10 +76,8 @@ from django.views import View
 
 class PrimeiraCBView(View):
     template = 'polls_2/conversor.html'
-
     def __render(self, context, request):
-        return render(
-            request=request,
+        return render(request=request,
             template_name=self.template,
             context=context
         )
@@ -87,24 +85,36 @@ class PrimeiraCBView(View):
         form = Conversor(request.POST)
         if form.is_valid():
             print("OS DADOS SAO VALIDOS!!!")
-        return self.__render(
-            request=request,
-            context={
-                'form': form,
-            }
+        return self.__render(request=request,
+            context={'form': form}
         )
-
     def get(self, request):
         print("[CLASS] ENTROU AQUI NA VIEW!!!")
         form = Conversor()
-        return self.__render(
-            request=request,
-            context={
-                'form': form,
-            }
+        return self.__render(request=request,
+            context={'form': form}
         )
 
 
 class SegundoConversor(PrimeiraCBView):
     template = 'polls_2/conversor_2.html'
+
+
+# DRY: Don't Repeat Yourself
+# Generic Views: Sao views que tem comportamentos padrao.
+# 1. Renderizar simplesmente um template.
+from django.views.generic import TemplateView
+
+# 1. View
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+
+# 2. Renderizar um formulario
+from django.views.generic import FormView
+
+
+class ConversorSuperPower(FormView):
+    form_class = Conversor
+    template_name = 'polls_2/conversor.html'
 
