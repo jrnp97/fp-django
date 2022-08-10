@@ -7,6 +7,9 @@ from django.shortcuts import render, redirect
 
 # View: Funcoes
 # signature: (request: Object) -> HttpResponse
+from django.urls import reverse, reverse_lazy
+
+
 def index(request):
     return HttpResponse('<h1>Hola</h1>')
 
@@ -122,41 +125,25 @@ class ConversorSuperPower(FormView):
 
 from .models import Category
 
-def lista_categorias(request):
-    categorias = Category.objects.all()
-    return render(
-        request=request,
-        template_name='polls_2/lista_categorias.html',
-        context={
-            'categorias': categorias,
-        }
-    )
+
+from django.views.generic import ListView, CreateView, DetailView
+class ListaCategoria(ListView):
+    model = Category
+    template_name = 'polls_2/lista_categorias.html'
+    context_object_name = 'categorias'
 
 
-def create_categoria(request):
-    from .forms import CategoryForm
-    if request.method == 'POST':
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            print("DADOS VALIDADOS!!!")
-            return redirect('lista_categorias')
-    else:
-        form = CategoryForm()
-    return render(
-        request=request,
-        template_name='polls_2/create_categoria.html',
-        context={'form': form},
-    )
 
-def detail_categoria(request, id):
-    categoria = Category.objects.get(category_id=id)
-    return render(
-        request=request,
-        template_name='polls_2/detail_categoria.html',
-        context={'categoria': categoria},
-    )
+class CreateCategoria(CreateView):
+    form_class = CategoryForm
+    template_name = 'polls_2/create_categoria.html'
+    success_url = reverse_lazy('lista_categorias')
 
+class DetailCategoria(DetailView):
+    model = Category
+    template_name = 'polls_2/detail_categoria.html'
+    pk_url_kwarg = 'id'
+    context_object_name = 'categoria'
 
 def update_categoria(request, id):
     categoria = Category.objects.get(category_id=id)

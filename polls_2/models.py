@@ -28,6 +28,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
+class Filme(models.Model):
+    pass
 """ 
 CREATE TABLE category 
  category_id INT PRIMARY KEY

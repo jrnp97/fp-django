@@ -1,8 +1,8 @@
 """ Modulo para definicao de rotas do app"""
 from django.urls import path
 from .views import index, yury, carlos, carlos_two, conversor, PrimeiraCBView, SegundoConversor, IndexView, \
-   TemplateView, ConversorSuperPower, lista_categorias, create_categoria, detail_categoria, update_categoria, \
-   delete_categoria
+   TemplateView, ConversorSuperPower, update_categoria, \
+   delete_categoria, ListaCategoria, CreateCategoria, DetailCategoria
 
 # URLS Config do app
 # Define a relacao entre um path e uma view
@@ -36,12 +36,12 @@ urlpatterns = [
    path('power_conversor/', ConversorSuperPower.as_view(), name='power_conversor'),
 
    # 2.
-   path('categorias/', lista_categorias, name='lista_categorias'),
+   path('categorias/', ListaCategoria.as_view(), name='lista_categorias'),
 
-   path('categorias/new/', create_categoria, name='create_categoria'),
+   path('categorias/new/', CreateCategoria.as_view(), name='create_categoria'),
 
    # 2. URL com parametros
-   path('categorias/<int:id>/', detail_categoria, name='detail_categoria'),
+   path('categorias/<int:id>/', DetailCategoria.as_view(), name='detail_categoria'),
 
    # 2. URL Com parametros
    path('categorias/<int:id>/update/', update_categoria, name='update_categoria'),
