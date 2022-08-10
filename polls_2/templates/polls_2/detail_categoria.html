@@ -8,6 +8,7 @@
 <h1>DADOS</h1>
 <br>
 <button><a href="{% url 'lista_categorias' %}">LISTA CATEGORIAS</a></button>
+<button><a href="{% url 'update_categoria' id=categoria.category_id %}">EDITAR</a></button>
 <hr>
 <ul>
     <li><b>NAME:</b> {{ categoria.name }}</li>

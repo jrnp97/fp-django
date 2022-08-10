@@ -16,7 +16,11 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
+    {% if update %}
+        <button><a href="{% url 'detail_categoria' id=categoria.category_id %}">CANCELAR</a></button>
+    {% endif %}
     <input type="submit" value="{% if update %} ACTUALIZAR!! {% else %} CRIAR!! {% endif %}">
 </form>
+
 </body>
 </html>
