@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 
 # Create your views here.
 
@@ -139,6 +140,7 @@ def create_categoria(request):
         if form.is_valid():
             form.save()
             print("DADOS VALIDADOS!!!")
+            return redirect('lista_categorias')
     else:
         form = CategoryForm()
     return render(
@@ -154,3 +156,26 @@ def detail_categoria(request, id):
         template_name='polls_2/detail_categoria.html',
         context={'categoria': categoria},
     )
+
+
+def update_categoria(request, id):
+    categoria = Category.objects.get(category_id=id)
+    if request.method == 'GET':
+        form = CategoryForm(instance=categoria)
+    elif request.method == 'POST':
+        form = CategoryForm(request.POST, instance=categoria)
+        if form.is_valid():
+            form.save()
+            print("Actualizado!!!")
+            return redirect('lista_categorias')
+
+    return render(
+        request,
+        template_name='polls_2/create_categoria.html',
+        context={'form': form, 'update': True, 'categoria': categoria},
+    )
+
+def delete_categoria(request, id):
+    categoria = Category.objects.get(category_id=id)
+    categoria.delete()
+    return redirect('lista_categorias')

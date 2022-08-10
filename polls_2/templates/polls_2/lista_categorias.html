@@ -12,7 +12,11 @@
 <hr>
 <ul>
     {% for categoria in categorias %}
-        <li><a href="{% url 'detail_categoria' id=categoria.category_id  %}"> {{ categoria.name }} </a> </li>
+        <li>
+            <a href="{% url 'detail_categoria' id=categoria.category_id  %}"> {{ categoria.name }} </a> |
+            <a href="{% url 'update_categoria' id=categoria.category_id %}">UPDATE</a> |
+            <a href="{% url 'delete_categoria' id=categoria.category_id %}">DELETE</a> |
+        </li>
     {% endfor %}
 </ul>
 </body>

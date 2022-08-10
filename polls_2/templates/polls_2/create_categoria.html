@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CATEGORIA | CREATE</title>
+    <title>CATEGORIA | {% if update %} UPDATE {% else %} CREATE {% endif %}</title>
 </head>
 <body>
-<h1>CREATE CATEGORIA</h1>
+<h1>{% if update %} UPDATE {% else %} CREATE {% endif %} CATEGORIA</h1>
+{% if update %}
+<h2>ID: {{ categoria.category_id }}</h2>
+{% endif %}
 <br>
 <button><a href="{% url 'lista_categorias' %}">LISTA CATEGORIAS</a></button>
 <hr>
@@ -13,7 +16,7 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="CRIAR!!">
+    <input type="submit" value="{% if update %} ACTUALIZAR!! {% else %} CRIAR!! {% endif %}">
 </form>
 </body>
 </html>
