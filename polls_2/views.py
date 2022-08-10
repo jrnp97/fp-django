@@ -146,3 +146,11 @@ def create_categoria(request):
         template_name='polls_2/create_categoria.html',
         context={'form': form},
     )
+
+def detail_categoria(request, id):
+    categoria = Category.objects.get(category_id=id)
+    return render(
+        request=request,
+        template_name='polls_2/detail_categoria.html',
+        context={'categoria': categoria},
+    )

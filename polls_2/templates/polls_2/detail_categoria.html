@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CATEGORIA | DETAIL: {{ categoria.category_id }} </title>
+</head>
+<body>
+<h1>DADOS</h1>
+<br>
+<button><a href="{% url 'lista_categorias' %}">LISTA CATEGORIAS</a></button>
+<hr>
+<ul>
+    <li><b>NAME:</b> {{ categoria.name }}</li>
+    <li><b>NOTA:</b> {{ categoria.nota }}</li>
+    <li><b>RATING:</b> {{ categoria.rating }}</li>
+    <li><b>LAST UPDATE:</b> {{ categoria.last_update }}</li>
+</ul>
+</body>
+</html>
